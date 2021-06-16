@@ -1,5 +1,6 @@
 from ursina import *
 from UClasses import *
+from random import *
 
 app = Ursina()
 
@@ -13,7 +14,7 @@ class Apple(Entity):
     def __init__(self):
         super(Apple, self).__init__(
             parent=scene,
-            position=(random.randint(0,boardsize),1,random.randint(0,boardsize)),
+            position=(randint(0,boardsize),1,randint(0,boardsize)),
             model="sphere",
             origin_y=0,
             texture="red_cube",
@@ -68,9 +69,9 @@ def update():
     head.position += head.direction
 
     hit = raycast(head.position, head.down, distance=2, ignore=[head, ])
-
+    print("Hejhej")
     if type(hit.entity) == Apple:
-        apple.position = (random.randint(1,boardsize-1),1,random.randint(1,boardsize-1))
+        apple.position = (randint(1,boardsize-1),1,randint(1,boardsize-1))
         head.speed +=0.01
         parts.append(Part(head.position - tuple([5*x for x in head.direction])))
 
