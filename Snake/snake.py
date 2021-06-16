@@ -58,11 +58,6 @@ def update():
     if held_keys["s"]:
         head.direction =  tuple([head.speed*x for x in (0,0,-1)])
 
-    #if parts != []:
-     #   lastpart = parts.pop()
-      #  lastpart.position = head.position - tuple([5*x for x in head.direction])
-       # parts.insert(0,lastpart)
-
     if parts != []:
 
         for i in range(len(parts)-1,0,-1):
@@ -70,12 +65,7 @@ def update():
             parts[i].position = newpos
         parts[0].position = head.position
 
-    print(head.direction)
     head.position += head.direction
-    #if head collides with apple:
-        #move apple
-
-
 
     hit = raycast(head.position, head.down, distance=2, ignore=[head, ])
 
@@ -86,7 +76,6 @@ def update():
 
     if type(hit.entity) == Wall:
         sys.exit()
-
 
 def createworld():
     for z in range(boardsize):
@@ -112,5 +101,4 @@ sky = Sky()
 camera.position = (boardsize/2,boardsize*3,boardsize/2)
 camera.rotation = Vec3(90, 0, 0)
 
-#Startar appen
 app.run()
